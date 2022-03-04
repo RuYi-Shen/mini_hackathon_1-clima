@@ -21,8 +21,8 @@
     <header>
         <h1>RYS Weather</h1>
         <div class="search-bar">
-            <input type="search" placeholder="Digite o nome do lugar">
-            <ion-icon name="search-circle-outline"></ion-icon>
+            <input type="text" placeholder="Digite o nome do lugar">
+            <ion-icon name="search-circle-outline" onclick="getLocationPosition(()=>{getLocationWeather()})"></ion-icon>
         </div>
     </header>
 

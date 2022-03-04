@@ -20,23 +20,30 @@ function getUserLocation(){
     }
 }
 
-function getLocationWeather(callback){
+function getLocationWeather(){
     axios.get(`${APIURL}lat=${latitude}&lon=${longitude}&appid=${APIKEY}`)
         .then(response => {
             myWeather = response.data;
-            callback();
         })
         .catch(err => console.log(err));
 }
 
-function getLocationPosition(){
-    axios.get(`${LOCATIONURL}q=${searchLocation}&limit=1&appid=${APIKEY}`)
+function getLocationPosition(callback) {
+    searchLocation = document.querySelector("header input").value;
+    if(searchLocation != ""){
+        axios.get(`${LOCATIONURL}q=${searchLocation}&limit=1&appid=${APIKEY}`)
         .then(response => {
-            searchLocationPosition = response.data;
-            userLatitude = searchLocationData[0].lat;
-            userLongitude = searchLocationData[0].lon;
+            searchLocationData = response.data;
+            latitude = searchLocationData[0].lat;
+            longitude = searchLocationData[0].lon;
+            callback();
         })
         .catch(err => console.log(err));
+    }
+    else{
+        alert("Insira um local válido");
+    }
+    
 }
 
 function displayWeatherInfo(){
@@ -54,15 +61,21 @@ function displayWeatherInfo(){
     `
 }
 
+document.querySelector("header input").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) getLocationPosition(()=>{getLocationWeather()});
+});
+
 function renderWindow(){
     document.querySelector(".loading").classList.add("hide");
     if(latitude != undefined && longitude != undefined) getLocationWeather(displayWeatherInfo);
 }
 
 
+
 // initialization
 
 getUserLocation();
 setTimeout(renderWindow, 2000);
+setInterval(displayWeatherInfo, 1000);
 
 
