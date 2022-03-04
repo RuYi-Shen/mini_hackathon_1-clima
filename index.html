@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clima</title>
+    <title>RYS Weather</title>
     <link href="./media/favicon.ico" rel="icon" type="image/x-icon"/>
 
     <link rel="stylesheet" href="reset.css"/>
@@ -18,32 +18,25 @@
 
 <body>
 
-    <header><h1>BuzzQuizz</h1></header>
+    <header>
+        <h1>RYS Weather</h1>
+        <div class="search-bar">
+            <input type="search" placeholder="Digite o nome do lugar">
+            <ion-icon name="search-circle-outline"></ion-icon>
+        </div>
+    </header>
 
-    <main class="quizz-list hide">
-        <section class="my-quizz">
-            <div class="my-quizz-header hide">
-                <h2>Seus Quizzes</h2>
-                <ion-icon data-identifier="create-quizz" name="add-circle" onclick="createNewQuizz()"></ion-icon>
-            </div>
-            
-            <div class="empty-quizz quizz">
-                <p>Você não criou nenhum quizz ainda :(</p>
-                <button data-identifier="create-quizz" onclick="createNewQuizz()"><p>Criar Quizz</p></button>
-            </div>
-            <div class="quizzes" data-identifier="create-quizz"></div>
+    <main class="weather-data">
+        <section class="weather">
         </section>
-        <section class="all-quizz" data-identifier="general-quizzes">
-            <h2>Todos os Quizzes</h2>
-            <div class="quizzes"></div>
+        <section class="data">
         </section>
     </main>
 
-    <main class="loading hide">
-        <img src="media/red_loading.gif" alt="loading animation">
+    <main class="loading">
+        <img src="media/loading.gif" alt="loading animation">
         <p>Carregando...</p>
     </main>
-
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
