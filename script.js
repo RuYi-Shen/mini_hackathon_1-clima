@@ -52,6 +52,7 @@ function displayWeatherInfo(){
     <p>${myWeather.weather[0].description.toUpperCase()}</p>
     `
     document.querySelector(".data").innerHTML = `
+    <p>${myWeather.name}</p>
     <p>Temperatura</p>
     <p>${myWeather.main.temp} ºC</p>
     <p>Pressão</p>
